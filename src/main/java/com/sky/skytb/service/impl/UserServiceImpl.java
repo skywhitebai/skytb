@@ -1,6 +1,8 @@
 package com.sky.skytb.service.impl;
 
+import com.sky.skytb.common.constants.UserConstant;
 import com.sky.skytb.dao.UUserMapper;
+import com.sky.skytb.dto.response.BaseResponse;
 import com.sky.skytb.model.UUser;
 import com.sky.skytb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,14 @@ public class UserServiceImpl implements UserService{
     UUserMapper userMapper;
 
     @Override
-    public UUser getUser(Long userId) {
+    public BaseResponse<UUser> getUser(Long userId) {
         if(userId==null){
-            return null;
+            return BaseResponse.failMessage(UserConstant.USER_ID_EPMTY);
         }
-        return userMapper.selectByPrimaryKey(userId);
+        UUser user=userMapper.selectByPrimaryKey(userId);
+        if(user==null){
+            return BaseResponse.failMessage(UserConstant.USER_ID_NOT_EXIST);
+        }
+        return BaseResponse.successData(user);
     }
 }

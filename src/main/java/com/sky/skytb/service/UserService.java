@@ -1,7 +1,8 @@
 package com.sky.skytb.service;
 
+import com.sky.skytb.dto.response.BaseResponse;
 import com.sky.skytb.model.UUser;
 
 public interface UserService {
-    UUser getUser(Long userId);
+    BaseResponse<UUser> getUser(Long userId);
 }

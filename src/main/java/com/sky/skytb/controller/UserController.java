@@ -1,5 +1,6 @@
 package com.sky.skytb.controller;
 
+import com.sky.skytb.dto.response.BaseResponse;
 import com.sky.skytb.model.UUser;
 import com.sky.skytb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping("/getUser")
-    public UUser getUser(Long userId){
+    public BaseResponse<UUser> getUser(Long userId){
         return userService.getUser(userId);
     }
 }
