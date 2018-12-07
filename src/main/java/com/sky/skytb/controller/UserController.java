@@ -17,4 +17,8 @@ public class UserController {
     public BaseResponse<UUser> getUser(Long userId){
         return userService.getUser(userId);
     }
+    @GetMapping("/getUserByUserName")
+    public BaseResponse<UUser> getUserByUserName(String userName){
+        return userService.getUserByUserName(userName);
+    }
 }

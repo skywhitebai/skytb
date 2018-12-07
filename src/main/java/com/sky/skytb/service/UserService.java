@@ -5,4 +5,6 @@ import com.sky.skytb.model.UUser;
 
 public interface UserService {
     BaseResponse<UUser> getUser(Long userId);
+
+    BaseResponse<UUser> getUserByUserName(String userName);
 }
